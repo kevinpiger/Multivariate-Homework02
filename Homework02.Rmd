@@ -63,8 +63,17 @@ newfish.treenew<-rpart(Species~., data=newfish,method="class",parms=list(split="
 printcp(newfish.treenew)
 ```
 ```{r}
+# 第一種畫法
 plot(newfish.treenew) 
 text(newfish.treenew)
+# 第二種畫法
+require(rpart.plot) 
+prp(newfish.treenew,         # 模型
+    faclen=0,           # 呈現的變數不要縮寫
+    fallen.leaves=TRUE, # 讓樹枝以垂直方式呈現
+    shadow.col="gray",  # 最下面的節點塗上陰影
+    # number of correct classifications / number of observations in that node
+    extra=2) 
 ```
 ```{r}
 fish.control<-rpart.control(minbucket=3,minsplit=10,xval=148)
