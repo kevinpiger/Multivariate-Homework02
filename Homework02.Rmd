@@ -20,8 +20,17 @@ Weight+L1+L2+L3+Height+Width,data=fish,method="class",control=fish.control)
 ```
 Let’s now plot the tree:
 ```{r}
+# 第一種畫法
 plot(fish.treeorig)
 text(fish.treeorig)
+# 第二種畫法
+require(rpart.plot) 
+prp(fish.treeorig,         # 模型
+    faclen=0,           # 呈現的變數不要縮寫
+    fallen.leaves=TRUE, # 讓樹枝以垂直方式呈現
+    shadow.col="gray",  # 最下面的節點塗上陰影
+    # number of correct classifications / number of observations in that node
+    extra=2) 
 ```
 
 Also check out the complexity parameter (CP):
@@ -33,8 +42,17 @@ summary(fish.treeorig)
 ```
 ```{r}
 fish.prunetree<-prune.rpart(fish.treeorig,cp=0.02) 
+# 第一種畫法
 plot(fish.prunetree)
 text(fish.prunetree)
+# 第二種畫法
+require(rpart.plot) 
+prp(fish.prunetree,         # 模型
+    faclen=0,           # 呈現的變數不要縮寫
+    fallen.leaves=TRUE, # 讓樹枝以垂直方式呈現
+    shadow.col="gray",  # 最下面的節點塗上陰影
+    # number of correct classifications / number of observations in that node
+    extra=2) 
 ```
 ```{r}
 L21<-fish$L2-fish$L1
