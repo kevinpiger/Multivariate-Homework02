@@ -170,7 +170,7 @@ newfish.logd
 table(newfish$Species,predict(newfish.logd,newfish))
 ```
 Now we examine the true error rate by cross-validation. To do this, we use another package called “glmnet”:
-```{r message=FALSE}
+```{r warning=FALSE}
 library(glmnet)
 x <- as.matrix(newfish[,-1])
 y <- newfish$Species
